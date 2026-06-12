@@ -4,7 +4,6 @@
 //      分配子电机对象、全局参数管理（固件、地址、错误码等）
 
 #pragma once
-
 #include "TMCM-3216.h"
 #include <windows.h>
 

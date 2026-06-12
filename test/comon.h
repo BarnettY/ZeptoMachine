@@ -49,7 +49,6 @@ public:
 	virtual	int		OnConnectMsg(UINT  port,BOOL connect)=0;
 	virtual	int		OnSynMsg(UINT  port,int reason)=0;
 	virtual	int		OnReceiveMsg(UINT  port,BYTE *pBuff,UINT  ncount)=0;
-	//virtual	int		OnAckMsg(UINT  port,int  ack)=0;
 };
 
 // ÒÇÆ÷×´Ì¬¶¨Òå

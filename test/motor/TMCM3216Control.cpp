@@ -296,7 +296,7 @@ int CTMCM3216Control::ReadMaxSpeed(UCHAR axis, UINT& speed, UINT WaitTM)
 int CTMCM3216Control::WriteMaxSpeed(UCHAR axis, UINT speed, UINT WaitTM)
 {
     if (axis >= TMCM3216_MAX_AXIS) return -1;
-    TMCL_CAN_Frame frame = TMCM3216_CAN_Protocol::setMaxSpeed((UCHAR)m_CanID, axis, (int32_t)speed);
+    TMCL_CAN_Frame frame = TMCM3216_CAN_Protocol::setMaxSpeed((UCHAR)m_CanID, axis, (int)speed);
     return SendAndWait(frame, WaitTM);
 }
 
@@ -310,7 +310,7 @@ int CTMCM3216Control::ReadAcceleration(UCHAR axis, UINT& acc, UINT WaitTM)
 int CTMCM3216Control::WriteAcceleration(UCHAR axis, UINT acc, UINT WaitTM)
 {
     if (axis >= TMCM3216_MAX_AXIS) return -1;
-    TMCL_CAN_Frame frame = TMCM3216_CAN_Protocol::setAcceleration((UCHAR)m_CanID, axis, (int32_t)acc);
+    TMCL_CAN_Frame frame = TMCM3216_CAN_Protocol::setAcceleration((UCHAR)m_CanID, axis, (int)acc);
     return SendAndWait(frame, WaitTM);
 }
 
@@ -338,7 +338,7 @@ int CTMCM3216Control::ReadMicroStep(UCHAR axis, UINT& microstep, UINT WaitTM)
 int CTMCM3216Control::WriteMicroStep(UCHAR axis, UINT microstep, UINT WaitTM)
 {
     if (axis >= TMCM3216_MAX_AXIS) return -1;
-    TMCL_CAN_Frame frame = TMCM3216_CAN_Protocol::setMicrostep((UCHAR)m_CanID, axis, (uint16_t)microstep);
+    TMCL_CAN_Frame frame = TMCM3216_CAN_Protocol::setMicrostep((UCHAR)m_CanID, axis, (WORD)microstep);
     return SendAndWait(frame, WaitTM);
 }
 

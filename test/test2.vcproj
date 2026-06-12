@@ -275,6 +275,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\can\TMCM-3216.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\can\TMCM-3216.h"
+				>
+			</File>
+			<File
 				RelativePath=".\can\TMCM3216Control.cpp"
 				>
 			</File>
@@ -352,14 +360,6 @@
 			</File>
 			<File
 				RelativePath=".\motor\TMCL_RxResult .h"
-				>
-			</File>
-			<File
-				RelativePath=".\motor\TMCM-3216.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\motor\TMCM-3216.h"
 				>
 			</File>
 			<File
