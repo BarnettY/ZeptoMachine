@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="Machine/MainRunState.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="18553" topLine="630" />
+	</File>
+	<File name="Machine/MainRunStatelnc.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="4379" topLine="183" />
+	</File>
+	<File name="Machine/Part.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="28520" topLine="839" />
+	</File>
+	<File name="Machine/Part.h" open="0" top="0" tabpos="5">
+		<Cursor position="3996" topLine="84" />
+	</File>
+	<File name="can/BarcodeCom.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="729" topLine="27" />
+	</File>
+	<File name="can/BarcodeCom.h" open="0" top="0" tabpos="0">
+		<Cursor position="1131" topLine="8" />
+	</File>
+	<File name="can/CanCom.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="1941" topLine="80" />
+	</File>
+	<File name="can/CanCom.h" open="0" top="0" tabpos="0">
+		<Cursor position="4087" topLine="174" />
+	</File>
+	<File name="can/CanControl.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="27767" topLine="1208" />
+	</File>
+	<File name="can/CanInterface.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="898" topLine="33" />
+	</File>
+	<File name="can/CanInterface.h" open="0" top="0" tabpos="2">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="comon.h" open="0" top="0" tabpos="1">
+		<Cursor position="2180" topLine="78" />
+	</File>
+	<File name="linux/BoardCanInterface.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="3586" topLine="159" />
+	</File>
+	<File name="linux/PcSerialAux.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2782" topLine="134" />
+	</File>
+	<File name="motor/MagneticBarMotor.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="13397" topLine="509" />
+	</File>
+	<File name="motor/ZMotor.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="0" topLine="129" />
+	</File>
+	<File name="protocol/PcDebugEX.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="0" topLine="72" />
+	</File>
+	<File name="protocol/PcDebugEX.h" open="0" top="0" tabpos="4">
+		<Cursor position="1" topLine="0" />
+	</File>
+	<File name="runinfo/ItemList.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="2042" topLine="101" />
+	</File>
+	<File name="test.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="7071" topLine="299" />
+	</File>
+	<File name="test.h" open="0" top="0" tabpos="4">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

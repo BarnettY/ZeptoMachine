@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="test" />
+		<Option pch_mode="2" />
+		<Option compiler="armelfgcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="armelfgcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="armelfgcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="`wx-config --cflags`" />
+			<Add option="-Wno-psabi" />
+			<Add option="-DNOTRACE" />
+			<Add option="-DREAD_SAMPLE_BARCODE" />
+			<Add option="-DwxUSE_UNICODE=0" />
+			<Add option="-DwxUSE_GUI=0" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config --libs`" />
+			<Add option="-lrt" />
+		</Linker>
+		<Unit filename="Machine/Machine.cpp" />
+		<Unit filename="Machine/Machine.h" />
+		<Unit filename="Machine/MainRunState.cpp" />
+		<Unit filename="Machine/MainRunState.h" />
+		<Unit filename="Machine/MainRunStatelnc.cpp" />
+		<Unit filename="Machine/Part.cpp" />
+		<Unit filename="Machine/Part.h" />
+		<Unit filename="TraceLogTcp.cpp" />
+		<Unit filename="TraceLogTcp.h" />
+		<Unit filename="can/AxisParamInfo.cpp" />
+		<Unit filename="can/AxisParamInfo.h" />
+		<Unit filename="can/BarcodeCom.cpp" />
+		<Unit filename="can/BarcodeCom.h" />
+		<Unit filename="can/CanCom.cpp" />
+		<Unit filename="can/CanCom.h" />
+		<Unit filename="can/CanControl.cpp" />
+		<Unit filename="can/CanControl.h" />
+		<Unit filename="can/CanInterface.cpp" />
+		<Unit filename="can/CanInterface.h" />
+		<Unit filename="can/ECanVci.H" />
+		<Unit filename="comm/AES.h" />
+		<Unit filename="comm/GeneralPart.cpp" />
+		<Unit filename="comm/GeneralPart.h" />
+		<Unit filename="comm/rackInfo.h" />
+		<Unit filename="comon.h" />
+		<Unit filename="control/StateQueue.cpp" />
+		<Unit filename="control/StateQueue.h" />
+		<Unit filename="error/ErrorSet.cpp" />
+		<Unit filename="error/ErrorSet.h" />
+		<Unit filename="error/errcode.cpp" />
+		<Unit filename="error/errcode.h" />
+		<Unit filename="linux/BoardCanInterface.cpp" />
+		<Unit filename="linux/BoardCanInterface.h" />
+		<Unit filename="linux/PcSerialAux.cpp" />
+		<Unit filename="linux/PcSerialAux.h" />
+		<Unit filename="linux/fd1.h" />
+		<Unit filename="motor/BasicMotor.cpp" />
+		<Unit filename="motor/BasicMotor.h" />
+		<Unit filename="motor/CanMotor.cpp" />
+		<Unit filename="motor/CanMotor.h" />
+		<Unit filename="motor/DrawerMotor.h" />
+		<Unit filename="motor/MagneticBarMotor.cpp" />
+		<Unit filename="motor/MagneticBarMotor.h" />
+		<Unit filename="motor/OvenCoverMotor.h" />
+		<Unit filename="motor/TransferMotor.h" />
+		<Unit filename="motor/UpDownMotor.h" />
+		<Unit filename="motor/XLMotor.h" />
+		<Unit filename="motor/XMotor.cpp" />
+		<Unit filename="motor/XMotor.h" />
+		<Unit filename="motor/XRMotor.h" />
+		<Unit filename="motor/YLMotor.h" />
+		<Unit filename="motor/YRMotor.h" />
+		<Unit filename="motor/ZMotor.cpp" />
+		<Unit filename="motor/ZMotor.h" />
+		<Unit filename="protocol/AllMsgClass.h" />
+		<Unit filename="protocol/BaseMsg.cpp" />
+		<Unit filename="protocol/BaseMsg.h" />
+		<Unit filename="protocol/CommonMsg.cpp" />
+		<Unit filename="protocol/CommonMsg.h" />
+		<Unit filename="protocol/PcDebugEX.cpp" />
+		<Unit filename="protocol/PcDebugEX.h" />
+		<Unit filename="protocol/Protocol.cpp" />
+		<Unit filename="protocol/Protocol.h" />
+		<Unit filename="runinfo/DebugPcCmdLst.cpp" />
+		<Unit filename="runinfo/DebugPcCmdLst.h" />
+		<Unit filename="runinfo/ItemList.cpp" />
+		<Unit filename="runinfo/ItemList.h" />
+		<Unit filename="runinfo/WorkThread.cpp" />
+		<Unit filename="runinfo/WorkThread.h" />
+		<Unit filename="runinfo/datadefine.h" />
+		<Unit filename="tcpip/AllTcpIp.cpp" />
+		<Unit filename="tcpip/AllTcpIp.h" />
+		<Unit filename="tcpip/BarCodeSerial.cpp" />
+		<Unit filename="tcpip/BarCodeSerial.h" />
+		<Unit filename="tcpip/GenCommunicate.cpp" />
+		<Unit filename="tcpip/GenCommunicate.h" />
+		<Unit filename="tcpip/GenTcpIP.cpp" />
+		<Unit filename="tcpip/GenTcpIP.h" />
+		<Unit filename="tcpip/PCSerial.cpp" />
+		<Unit filename="tcpip/PCSerial.h" />
+		<Unit filename="tcpip/PCSocket.cpp" />
+		<Unit filename="tcpip/PCSocket.h" />
+		<Unit filename="tcpip/RingBuff.cpp" />
+		<Unit filename="tcpip/RingBuff.h" />
+		<Unit filename="tcpip/TemptureSerial.cpp" />
+		<Unit filename="tcpip/TemptureSerial.h" />
+		<Unit filename="test.cpp" />
+		<Unit filename="test.h" />
+		<Unit filename="trace.h" />
+		<Extensions>
+			<code_completion />
+			<debugger>
+				<remote_debugging target="Debug">
+					<options conn_type="0" serial_baud="115200" ip_address="192.168.1.136" ip_port="1111" />
+				</remote_debugging>
+			</debugger>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,515 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\test.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\test.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 test"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "test 1.0.0.1 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2012",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_TEST_DIALOG DIALOGEX 0, 0, 530, 309
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "测试 CAN 通用例子"
+FONT 9, "宋体"
+BEGIN
+    EDITTEXT        IDC_EDIT_SENDEID,64,20,32,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE
+    EDITTEXT        IDC_EDIT_AXISID,120,20,41,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE
+    CONTROL         "读",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | NOT 
+                    WS_VISIBLE | WS_TABSTOP,184,1,24,10
+    EDITTEXT        IDC_EDIT_SENDFRAMEID,198,20,41,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE
+    EDITTEXT        IDC_EDIT_SENDDATA,61,0,120,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE
+    PUSHBUTTON      "保存",IDC_BUTTON_SEND,204,0,41,14,NOT WS_VISIBLE
+    DEFPUSHBUTTON   "连接",IDC_BUTTON_CONNECT,73,11,46,14,NOT WS_VISIBLE
+    PUSHBUTTON      "启动CAN",IDC_BUTTON_STARTCAN,126,11,46,14,NOT 
+                    WS_VISIBLE
+    PUSHBUTTON      "复位CAN",IDC_BUTTON_RESETCAN,177,11,46,14,NOT 
+                    WS_VISIBLE
+    LTEXT           "发送格式:",IDC_STATIC,12,82,37,8,NOT WS_VISIBLE
+    COMBOBOX        IDC_COMBO_SENDTYPE,58,78,63,91,CBS_DROPDOWNLIST | NOT 
+                    WS_VISIBLE | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "帧类型:",IDC_STATIC,135,82,29,8,NOT WS_VISIBLE
+    COMBOBOX        IDC_COMBO_SENDFRAMETYPE,165,78,41,63,CBS_DROPDOWNLIST | 
+                    NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "帧格式:",IDC_STATIC,217,81,29,8,NOT WS_VISIBLE
+    COMBOBOX        IDC_COMBO_SENDFRAMEFORMAT,248,77,41,63,CBS_DROPDOWNLIST | 
+                    NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "TCW: 0x",IDC_STATIC,165,23,29,8,NOT WS_VISIBLE
+    LTEXT           "数据:",IDC_STATIC,30,2,21,8,NOT WS_VISIBLE
+    GROUPBOX        " 发送数据帧 ",IDC_STATIC,5,3,229,48,NOT WS_VISIBLE
+    GROUPBOX        " 初始化CAN参数 ",IDC_STATIC,4,25,289,74,NOT WS_VISIBLE
+    LTEXT           "验收码: 0x",IDC_STATIC,12,38,40,8,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT_CODE,54,36,40,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    LTEXT           "屏蔽码: 0x",IDC_STATIC,106,38,41,8,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT_MASK,148,36,42,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    LTEXT           "定时器0: 0x",IDC_STATIC,11,58,45,8,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT_TIMING0,57,57,40,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    LTEXT           "定时器1: 0x",IDC_STATIC,105,58,45,8,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT_TIMING1,151,56,42,12,ES_AUTOHSCROLL | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    LTEXT           "模式:",IDC_STATIC,199,58,21,8,NOT WS_VISIBLE
+    COMBOBOX        IDC_COMBO_MODE,240,55,50,92,CBS_DROPDOWNLIST | NOT 
+                    WS_VISIBLE | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_BAUD1,240,36,48,144,CBS_DROPDOWNLIST | NOT 
+                    WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "波特率:",IDC_STATIC,199,38,29,8,NOT WS_VISIBLE
+    LTEXT           "发送帧数:",IDC_STATIC,214,290,37,8
+    LTEXT           "接收帧数:",IDC_STATIC,314,292,37,8
+    PUSHBUTTON      "清空计数",IDC_BUTTON_clearcnt,477,287,50,14
+    LTEXT           "0",IDC_STATIC_recv,354,293,53,8
+    LTEXT           "0",IDC_STATIC_send,253,290,53,8
+    LTEXT           "SID: 0x",IDC_STATIC,30,20,29,8,NOT WS_VISIBLE
+    LTEXT           "轴号:",IDC_STATIC,99,20,20,8,NOT WS_VISIBLE
+    PUSHBUTTON      "开始IO检测",IDC_MONITOR,101,105,50,14
+    CONTROL         "M1左限位",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,1,133,43,22
+    CONTROL         "M1右限位",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,45,133,43,22
+    CONTROL         "M1推手下降",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,88,133,43,22
+    CONTROL         "M1原点",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,131,133,43,22
+    CONTROL         "M2原点",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,172,133,43,22
+    CONTROL         "M3右限位",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,215,133,43,22
+    CONTROL         "M3原点",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,1,163,43,22
+    CONTROL         "M3试管空",IDC_RADIO8,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,45,163,43,22
+    CONTROL         "M4左限位",IDC_RADIO9,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,88,163,43,22
+    CONTROL         "M4右限位",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,131,163,43,22
+    CONTROL         "M5右限位",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,172,163,43,22
+    CONTROL         "M6右限位",IDC_RADIO12,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,215,163,43,22
+    LTEXT           "控制器ID",IDC_STATIC,82,15,38,8,NOT WS_VISIBLE | 
+                    WS_DISABLED
+    EDITTEXT        IDC_POS1,219,12,40,14,ES_AUTOHSCROLL | NOT WS_VISIBLE | 
+                    WS_DISABLED
+    LTEXT           "轴ID",IDC_STATIC,303,18,17,8
+    PUSHBUTTON      "GO",IDC_BUTTONGO,402,140,46,14
+    PUSHBUTTON      "创建服务器",IDC_BUTTON_STAR,225,12,50,14,NOT WS_VISIBLE
+    GROUPBOX        "模拟运行",IDC_STATIC,289,257,241,34,NOT WS_VISIBLE | 
+                    WS_DISABLED
+    PUSHBUTTON      "初始化",IDC_BTN_NEW,492,270,28,14,BS_FLAT | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "下一步",IDC_BTN_NEXT,339,269,28,13,BS_FLAT | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "上一步",IDC_BTN_PRE,373,269,28,13,BS_FLAT | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "运行",IDC_BTN_RUN,407,269,35,13,BS_FLAT | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "停止",IDC_BTN_STOP,448,270,35,13,BS_FLAT | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    COMBOBOX        IDC_COMBO_CTLID,125,13,48,84,CBS_DROPDOWNLIST | NOT 
+                    WS_VISIBLE | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_AXIS,326,14,48,84,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_SN,349,142,48,84,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "参数数值：",IDC_STATIC,176,13,39,8,NOT WS_VISIBLE
+    LTEXT           "运动序号：",IDC_STATIC,306,145,39,8
+    PUSHBUTTON      "上电",IDC_LOCK,412,31,46,14
+    PUSHBUTTON      "断电",IDC_UNLOCK,464,31,46,14
+    PUSHBUTTON      "条码区灯亮",IDC_BTN_RST2,5,105,43,14,BS_FLAT
+    PUSHBUTTON      "加样区灯亮",IDC_BTN_RST3,52,105,43,14,BS_FLAT
+    CONTROL         "M8等待区满",IDC_RADIO18,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,217,194,43,22
+    CONTROL         "M7右限位",IDC_RADIO13,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,2,194,43,22
+    CONTROL         "M7原点",IDC_RADIO14,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,46,194,43,22
+    CONTROL         "M7试管空",IDC_RADIO15,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,89,194,43,22
+    CONTROL         "M8左限位",IDC_RADIO16,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,132,194,43,22
+    CONTROL         "M8托架满",IDC_RADIO17,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,173,194,43,22
+    CONTROL         "M8托架空A",IDC_RADIO19,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE | WS_DISABLED,2,225,43,22
+    CONTROL         "KK1进样干预",IDC_RADIO20,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,45,225,65,22
+    CONTROL         "KK2回收干预",IDC_RADIO21,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE | WS_DISABLED,111,225,65,22
+    PUSHBUTTON      "BACK",IDC_BUTTONBACK,453,140,46,14
+    PUSHBUTTON      "Reset",IDC_BUTTONRST,307,88,46,14
+    PUSHBUTTON      "push in",IDC_BUTTONPUSHIN,356,88,46,14
+    PUSHBUTTON      "push out",IDC_BUTTONPUSHOUT,408,88,46,14
+    PUSHBUTTON      "empty",IDC_BUTTONEMPTY,357,124,46,14
+    CONTROL         "M8托架空B",IDC_RADIO22,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,177,225,43,22
+    LTEXT           "条码：",IDC_STATIC,310,107,24,8
+    EDITTEXT        IDC_EDIT_BAR,346,107,121,14,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "条码",IDC_BUTTONREADBAR,469,107,34,14
+    PUSHBUTTON      "ShiftIner",IDC_BUTTONSHIFTINER,308,124,46,14
+    LTEXT           "部件号",IDC_STATIC,314,75,24,8
+    COMBOBOX        IDC_COMBO_PART,342,71,48,84,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "电机",IDC_STATIC,300,5,229,48
+    PUSHBUTTON      "向前运动",IDC_BUTTONGO2,307,32,46,14
+    PUSHBUTTON      "向后运动",IDC_BUTTONBACK2,360,32,46,14
+    GROUPBOX        "部件",IDC_STATIC,301,55,229,104
+    GROUPBOX        "条码区位置",IDC_STATIC,265,162,265,46
+    GROUPBOX        "加样区位置",IDC_STATIC,300,212,229,44
+    PUSHBUTTON      "架子位",IDC_BUTTONBPOS1,271,181,28,14
+    PUSHBUTTON      "管1",IDC_BUTTONBPOS2,300,181,17,14
+    PUSHBUTTON      "管2",IDC_BUTTONBPOS3,333,181,17,14
+    PUSHBUTTON      "管3",IDC_BUTTONBPOS4,367,181,17,14
+    PUSHBUTTON      "管4",IDC_BUTTONBPOS5,400,181,17,14
+    PUSHBUTTON      "管5",IDC_BUTTONBPOS6,433,181,17,14
+    PUSHBUTTON      "架条码",IDC_BUTTONBPOS7,450,181,32,14
+    PUSHBUTTON      "架子位",IDC_BUTTONSPOS1,308,231,28,14
+    PUSHBUTTON      "管1",IDC_BUTTONSPOS7,507,231,17,14
+    PUSHBUTTON      "管2",IDC_BUTTONSPOS6,485,231,17,14
+    PUSHBUTTON      "管3",IDC_BUTTONSPOS5,463,231,17,14
+    PUSHBUTTON      "管4",IDC_BUTTONSPOS4,440,231,17,14
+    PUSHBUTTON      "管5",IDC_BUTTONSPOS3,420,231,17,14
+    PUSHBUTTON      "架条码",IDC_BUTTONSPOS2,337,231,32,14
+    PUSHBUTTON      "重读架条码",IDC_BUTTONBPOS8,483,181,43,14
+    PUSHBUTTON      "重读架条码",IDC_BUTTONSPOS9,372,231,43,14
+    PUSHBUTTON      "空1",IDC_BUTTONBPOS9,316,181,17,14
+    PUSHBUTTON      "空2",IDC_BUTTONBPOS10,350,181,17,14
+    PUSHBUTTON      "空3",IDC_BUTTONBPOS11,383,181,17,14
+    PUSHBUTTON      "空4",IDC_BUTTONBPOS12,417,181,17,14
+END
+
+IDD_TRACKER_DIALOG DIALOG DISCARDABLE  0, 0, 249, 197
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 10, "System"
+BEGIN
+    PUSHBUTTON      "CAN连接",IDC_BUTTON_CONNECT,23,82,35,12,BS_FLAT
+    PUSHBUTTON      "复位",IDC_BTN_RST,61,82,25,12,BS_FLAT
+    PUSHBUTTON      "初始化",IDC_BTN_NEW,93,82,25,12,BS_FLAT | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "下一步",IDC_BTN_NEXT,123,82,25,12,BS_FLAT | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "运行",IDC_BTN_RUN,182,82,25,12,BS_FLAT
+    DEFPUSHBUTTON   "OK",IDOK,56,176,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,158,176,50,14
+    PUSHBUTTON      "轨道调试",IDC_SHOWDLG,14,42,50,14
+    PUSHBUTTON      "轨道视图",IDC_SHOWVIEW,14,23,50,14
+    PUSHBUTTON      "上一步",IDC_BTN_PRE,152,82,25,12,BS_FLAT | NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "停止",IDC_BTN_STOP,211,82,25,12,BS_FLAT
+    LTEXT           "发送帧数:",IDC_STATIC,7,151,37,8
+    LTEXT           "接收帧数:",IDC_STATIC,104,151,37,8
+    PUSHBUTTON      "清空计数",IDC_BUTTON_clearcnt,199,149,37,14
+    LTEXT           "0",IDC_STATIC_recv,144,151,53,8
+    LTEXT           "0",IDC_STATIC_send,46,151,53,8
+    GROUPBOX        "CAN",IDC_STATIC,7,136,235,34
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "FileDescription", "test Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "test\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2003\0"
+            VALUE "OriginalFilename", "test.EXE\0"
+            VALUE "ProductName", "test 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO MOVEABLE PURE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_TEST_DIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 307
+    END
+
+    IDD_TRACKER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 242
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 190
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_TEST_DIALOG DLGINIT
+BEGIN
+    IDC_COMBO_SENDTYPE, 0x403, 9, 0
+0xfdd5, 0xa3b3, 0xa2b7, 0xcdcb, "\000" 
+    IDC_COMBO_SENDTYPE, 0x403, 9, 0
+0xa5b5, 0xceb4, 0xa2b7, 0xcdcb, "\000" 
+    IDC_COMBO_SENDTYPE, 0x403, 9, 0
+0xd4d7, 0xa2b7, 0xd4d7, 0xd5ca, "\000" 
+    IDC_COMBO_SENDTYPE, 0x403, 13, 0
+0xa5b5, 0xceb4, 0xd4d7, 0xa2b7, 0xd4d7, 0xd5ca, "\000" 
+    IDC_COMBO_SENDFRAMETYPE, 0x403, 7, 0
+0xeab1, 0xbcd7, 0xa1d6, "\000" 
+    IDC_COMBO_SENDFRAMETYPE, 0x403, 7, 0
+0xa9c0, 0xb9d5, 0xa1d6, "\000" 
+    IDC_COMBO_SENDFRAMEFORMAT, 0x403, 7, 0
+0xfdca, 0xddbe, 0xa1d6, "\000" 
+    IDC_COMBO_SENDFRAMEFORMAT, 0x403, 7, 0
+0xb6d4, 0xccb3, 0xa1d6, "\000" 
+    IDC_COMBO_MODE, 0x403, 9, 0
+0xfdd5, 0xa3b3, 0xa3c4, 0xbdca, "\000" 
+    IDC_COMBO_MODE, 0x403, 9, 0
+0xbbd6, 0xfdcc, 0xa3c4, 0xbdca, "\000" 
+    IDC_COMBO_BAUD1, 0x403, 9, 0
+0x3031, 0x3030, 0x624b, 0x7370, "\000" 
+    IDC_COMBO_BAUD1, 0x403, 8, 0
+0x3038, 0x4b30, 0x7062, 0x0073, 
+    IDC_COMBO_BAUD1, 0x403, 8, 0
+0x3035, 0x4b30, 0x7062, 0x0073, 
+    IDC_COMBO_BAUD1, 0x403, 8, 0
+0x3532, 0x4b30, 0x7062, 0x0073, 
+    IDC_COMBO_BAUD1, 0x403, 8, 0
+0x3231, 0x4b35, 0x7062, 0x0073, 
+    IDC_COMBO_BAUD1, 0x403, 8, 0
+0x3031, 0x4b30, 0x7062, 0x0073, 
+    IDC_COMBO_BAUD1, 0x403, 7, 0
+0x3035, 0x624b, 0x7370, "\000" 
+    IDC_COMBO_BAUD1, 0x403, 7, 0
+0x3032, 0x624b, 0x7370, "\000" 
+    IDC_COMBO_BAUD1, 0x403, 7, 0
+0x3031, 0x624b, 0x7370, "\000" 
+    IDC_COMBO_CTLID, 0x403, 2, 0
+0x0031, 
+    IDC_COMBO_CTLID, 0x403, 2, 0
+0x0032, 
+    IDC_COMBO_CTLID, 0x403, 2, 0
+0x0033, 
+    IDC_COMBO_AXIS, 0x403, 2, 0
+0x0031, 
+    IDC_COMBO_AXIS, 0x403, 2, 0
+0x0032, 
+    IDC_COMBO_AXIS, 0x403, 2, 0
+0x0033, 
+    IDC_COMBO_AXIS, 0x403, 2, 0
+0x0034, 
+    IDC_COMBO_AXIS, 0x403, 2, 0
+0x0035, 
+    IDC_COMBO_AXIS, 0x403, 2, 0
+0x0036, 
+    IDC_COMBO_AXIS, 0x403, 2, 0
+0x0037, 
+    IDC_COMBO_AXIS, 0x403, 2, 0
+0x0038, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0031, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0032, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0033, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0034, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0035, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0036, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0037, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0038, 
+    IDC_COMBO_SN, 0x403, 2, 0
+0x0039, 
+    IDC_COMBO_SN, 0x403, 3, 0
+0x3031, "\000" 
+    IDC_COMBO_PART, 0x403, 7, 0
+0xf8bd, 0xf9d1, 0xf8c7, "\000" 
+    IDC_COMBO_PART, 0x403, 7, 0
+0xf5cc, 0xebc2, 0xf8c7, "\000" 
+    IDC_COMBO_PART, 0x403, 7, 0
+0xbabb, 0xe5b3, 0xf8c7, "\000" 
+    IDC_COMBO_PART, 0x403, 7, 0
+0xd3bc, 0xf9d1, 0xf8c7, "\000" 
+    IDC_COMBO_PART, 0x403, 7, 0
+0xd8bb, 0xd5ca, 0xf8c7, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "popmenu"
+    BEGIN
+        MENUITEM "刷新",                        ID_MENU_REFRESH
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 test(&A)..."
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\test.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,95 @@
+03/25/2026 16:27:43.716 CGenTcpIP::SetAddress m_nPort=1 BSever=1 ,port=7000
+03/25/2026 16:27:43.819 CGenTcpIP SN=1 ReConnect
+03/25/2026 16:27:43.819 Server listening at 127.0.0.1:7000
+03/25/2026 16:27:43.864 CPart:: InitPart
+03/25/2026 16:27:43.864 CMagneticBarMotor::InitHome MotorName=MagneticBarMotor,m_MotorPos=-1
+03/25/2026 16:27:44.104 CZMotor::InitHome MotorName=ZMotor,m_MotorPos=-1
+03/25/2026 16:27:44.344 CXMotor::InitHome MotorName=XMotor,m_MotorPos=-1
+03/25/2026 16:27:44.595 CMainRunState::TrackSwitchState  LastState =MACHINE_INIT ,State=MACHINE_READY
+03/25/2026 16:27:49.797 CAllTcpIp  OnReceiveMsg type=MSG_RcvQueryStatus
+03/25/2026 16:27:49.872 CAllTcpIp  OnReceiveMsg type=MSG_RcvQueryVersion
+03/25/2026 16:27:49.992 CAllTcpIp  OnReceiveMsg type=MSG_RcvMotionParameters
+03/25/2026 16:28:02.163 CAllTcpIp  OnReceiveMsg type=MSG_RcvQueryStatus
+03/25/2026 16:28:02.268 CAllTcpIp  OnReceiveMsg type=MSG_RcvQueryVersion
+03/25/2026 16:28:02.373 CAllTcpIp  OnReceiveMsg type=MSG_RcvMotionParameters
+03/25/2026 16:28:48.136 CAllTcpIp  OnReceiveMsg type=MSG_RcvQueryLampAndCoverStatus
+03/25/2026 16:29:04.701 CAllTcpIp  OnReceiveMsg type=MSG_RcvQueryLampAndCoverStatus
+03/25/2026 16:29:07.491 CAllTcpIp  OnReceiveMsg type=MSG_RcvProgramStep
+03/25/2026 16:29:07.491 CMainRunState  RcvProgramStep:: ncount =9
+03/25/2026 16:29:07.491 ProgramQueue::index =0, HolePos=1, MixTime =300,MagneticTime=0,WaitTime=120,SpeedLevel=5,Volume=10000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.491 ProgramQueue::index =1, HolePos=1, MixTime =300,MagneticTime=0,WaitTime=120,SpeedLevel=5,Volume=10000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.491 ProgramQueue::index =2, HolePos=1, MixTime =300,MagneticTime=0,WaitTime=120,SpeedLevel=5,Volume=10000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.491 ProgramQueue::index =3, HolePos=1, MixTime =300,MagneticTime=999,WaitTime=120,SpeedLevel=5,Volume=10000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.491 ProgramQueue::index =4, HolePos=2, MixTime =60,MagneticTime=120,WaitTime=0,SpeedLevel=10,Volume=1000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.491 ProgramQueue::index =5, HolePos=3, MixTime =60,MagneticTime=120,WaitTime=0,SpeedLevel=10,Volume=1000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.491 ProgramQueue::index =6, HolePos=4, MixTime =180,MagneticTime=120,WaitTime=180,SpeedLevel=10,Volume=1000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.491 ProgramQueue::index =7, HolePos=5, MixTime =300,MagneticTime=120,WaitTime=0,SpeedLevel=4,Volume=70,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.491 ProgramQueue::index =8, HolePos=4, MixTime =60,MagneticTime=0,WaitTime=0,SpeedLevel=10,Volume=1000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:07.601 CAllTcpIp  OnReceiveMsg type=MSG_TestStart
+03/25/2026 16:29:07.601 CMainRunState::TrackSwitchState  LastState =MACHINE_READY ,State=MACHINE_TEST
+03/25/2026 16:29:07.601 CMainRunState::SndMachineState  State=MACHINE_TEST
+03/25/2026 16:29:08.440 ProgramQueue::index =0, HolePos=1, MixTime =300,MagneticTime=0,WaitTime=120,SpeedLevel=5,Volume=10000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 ProgramQueue::index =1, HolePos=1, MixTime =300,MagneticTime=0,WaitTime=120,SpeedLevel=5,Volume=10000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 ProgramQueue::index =2, HolePos=1, MixTime =300,MagneticTime=0,WaitTime=120,SpeedLevel=5,Volume=10000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 ProgramQueue::index =3, HolePos=1, MixTime =300,MagneticTime=999,WaitTime=120,SpeedLevel=5,Volume=10000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 ProgramQueue::index =4, HolePos=2, MixTime =60,MagneticTime=120,WaitTime=0,SpeedLevel=10,Volume=1000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 ProgramQueue::index =5, HolePos=3, MixTime =60,MagneticTime=120,WaitTime=0,SpeedLevel=10,Volume=1000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 ProgramQueue::index =6, HolePos=4, MixTime =180,MagneticTime=120,WaitTime=180,SpeedLevel=10,Volume=1000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 ProgramQueue::index =7, HolePos=5, MixTime =300,MagneticTime=120,WaitTime=0,SpeedLevel=4,Volume=70,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 ProgramQueue::index =8, HolePos=4, MixTime =60,MagneticTime=0,WaitTime=0,SpeedLevel=10,Volume=1000,MixPercent=80,suckLevel=5
+03/25/2026 16:29:08.440 CPart:: GetMoveHeight Height =23.799999,Type=1,HolePos=1,Volume=10000
+03/25/2026 16:29:08.440 CPart:: GetMoveHeight Height =19.500000,Type=1,HolePos=2,Volume=1000
+03/25/2026 16:29:08.440 CPart:: GetMoveHeight Height =19.500000,Type=1,HolePos=3,Volume=1000
+03/25/2026 16:29:08.440 CPart:: GetMoveHeight Height =19.500000,Type=1,HolePos=4,Volume=1000
+03/25/2026 16:29:08.440 CPart:: GetMoveHeight Height =1.365000,Type=1,HolePos=5,Volume=70
+03/25/2026 16:29:08.440 CWorkThread::JudgeIdel index =1,PART =PART_ARM
+03/25/2026 16:29:08.455 CPart:: WholeAction Kit_Type=1, Hole=1,MixTime =300,MagneticTime=0,WaitTime=120,SpeedLevel=5,Volume=10000,SuckMagneticWay=1,m_NumberOfSegments=2,SuckMagLevel=5
+03/25/2026 16:29:08.455 CPart:: SndActionStarOrEndMsg StepID=1,Mark=1,ActType=0,Time=0
+03/25/2026 16:29:08.455 CPart::MoveToHolePos Type=1,HolePos=1
+03/25/2026 16:29:08.455 CXMotor::MoveToHoleOneCenter MotorName=XMotor,m_MotorPos=0,Type=1
+03/25/2026 16:29:08.455 CXMotor::MoveToHoleOneCenter,Type =1,NowPos=0,TargetPos=2200 
+03/25/2026 16:29:08.455 CMagneticBarMotor::MoveIdlePos NowPos=0,TargetPos=30450 
+03/25/2026 16:29:08.471 CZMotor::MoveDown MotorName=ZMotor,m_MotorPos=0,Mark=0
+03/25/2026 16:29:08.545 CPart MixTime::Span1=90
+03/25/2026 16:29:08.545 CPart:: SndActionStarOrEndMsg StepID=1,Mark=1,ActType=1,Time=300
+03/25/2026 16:29:08.545 CPart::MoveHoleOneMix Type=1,SpeedLevel=5,bHalfMove=1
+03/25/2026 16:29:08.545 CXMotor::MoveHalfHoleOneDistance MotorName=XMotor,m_MotorPos=2,Type=1
+03/25/2026 16:29:23.796 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=1,bDown=1,height=5.000000,Mark=1,SpeedLevel=4
+03/25/2026 16:30:06.561 CXMotor::MoveHoleOneDistance MotorName=XMotor,m_MotorPos=2,Type=1,Right=1,bMix=1,SpeedLevel=5
+03/25/2026 16:30:06.636 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=1,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:06.651 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:06.651 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:06.666 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:06.681 CXMotor::MoveHoleOneDistance MotorName=XMotor,m_MotorPos=2,Type=1,Right=0,bMix=1,SpeedLevel=5
+03/25/2026 16:30:06.741 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:06.756 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:06.756 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:06.771 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:06.771 CPart:: WholeAction StepId =1,MixTime =1 ,SpanTime =300
+03/25/2026 16:30:06.771 CPart::MoveHoleOneMix Type=1,SpeedLevel=5,bHalfMove=0
+03/25/2026 16:30:08.307 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=1,SpeedLevel=4
+03/25/2026 16:30:11.994 CXMotor::MoveHoleOneDistance MotorName=XMotor,m_MotorPos=2,Type=1,Right=1,bMix=1,SpeedLevel=5
+03/25/2026 16:30:12.054 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:12.069 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:12.084 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:12.084 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:12.099 CXMotor::MoveHoleOneDistance MotorName=XMotor,m_MotorPos=2,Type=1,Right=0,bMix=1,SpeedLevel=5
+03/25/2026 16:30:12.159 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:12.159 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:12.174 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:12.189 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:12.189 CPart:: WholeAction StepId =1,MixTime =1 ,SpanTime =300
+03/25/2026 16:30:12.189 CPart::MoveHoleOneMix Type=1,SpeedLevel=5,bHalfMove=0
+03/25/2026 16:30:12.814 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=1,SpeedLevel=4
+03/25/2026 16:30:13.618 CXMotor::MoveHoleOneDistance MotorName=XMotor,m_MotorPos=2,Type=1,Right=1,bMix=1,SpeedLevel=5
+03/25/2026 16:30:13.678 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:13.693 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:13.708 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:13.708 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:13.723 CXMotor::MoveHoleOneDistance MotorName=XMotor,m_MotorPos=2,Type=1,Right=0,bMix=1,SpeedLevel=5
+03/25/2026 16:30:13.783 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:13.798 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:13.813 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=0,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:13.813 CZMotor::MoveUpDownFast MotorName=ZMotor,m_MotorPos=2,bDown=1,height=5.000000,Mark=2,SpeedLevel=4
+03/25/2026 16:30:13.828 CPart:: WholeAction StepId =1,MixTime =1 ,SpanTime =300
+03/25/2026 16:30:13.828 CPart::MoveHoleOneMix Type=1,SpeedLevel=5,bHalfMove=0

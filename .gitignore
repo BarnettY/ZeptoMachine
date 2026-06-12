@@ -1,0 +1,12 @@
+# 注释用 # 开头
+
+
+
+# 忽略编译输出文件夹
+.vs/
+Debug/
+Release/
+test/obj
+test/Release
+test/Debug
+test/bin
