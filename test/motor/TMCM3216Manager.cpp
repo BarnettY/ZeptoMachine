@@ -1,8 +1,5 @@
-// TMCM3216Manager.cpp
-// 多卡多轴管理器实现
-
+// TMCM3216Manager.cpp - C++98 兼容版
 #include "TMCM3216Manager.h"
-#include <stdio.h>
 
 CTMCM3216Manager& CTMCM3216Manager::Instance()
 {
@@ -24,12 +21,11 @@ CTMCM3216Manager::~CTMCM3216Manager()
 BOOL CTMCM3216Manager::RegisterCard(UINT cardID, UINT canID)
 {
     EnterCriticalSection(&m_csLock);
-    if (m_Cards.find(cardID) != m_Cards.end())
-    {
+    if (m_Cards.find(cardID) != m_Cards.end()) {
         LeaveCriticalSection(&m_csLock);
         return FALSE;
     }
-    TMCMCardSlot* slot = new TMCMCardSlot;
+    TMCM3216CardSlot* slot = new TMCM3216CardSlot();
     slot->cardID = cardID;
     slot->canID  = canID;
     slot->pControl = new CTMCM3216Control(cardID, canID);
@@ -41,19 +37,13 @@ BOOL CTMCM3216Manager::RegisterCard(UINT cardID, UINT canID)
 void CTMCM3216Manager::UnregisterCard(UINT cardID)
 {
     EnterCriticalSection(&m_csLock);
-    auto it = m_Cards.find(cardID);
-    if (it != m_Cards.end())
-    {
-        TMCMCardSlot* slot = it->second;
-        if (slot)
-        {
+    std::map<UINT, TMCM3216CardSlot*>::iterator it = m_Cards.find(cardID);
+    if (it != m_Cards.end()) {
+        TMCM3216CardSlot* slot = it->second;
+        if (slot) {
             for (int i = 0; i < TMCM3216_MAX_AXIS; ++i)
-            {
                 delete slot->pMotors[i];
-                slot->pMotors[i] = NULL;
-            }
             delete slot->pControl;
-            slot->pControl = NULL;
             delete slot;
         }
         m_Cards.erase(it);
@@ -64,11 +54,10 @@ void CTMCM3216Manager::UnregisterCard(UINT cardID)
 void CTMCM3216Manager::UnregisterAll()
 {
     EnterCriticalSection(&m_csLock);
-    for (auto& kv : m_Cards)
-    {
-        TMCMCardSlot* slot = kv.second;
-        if (slot)
-        {
+    std::map<UINT, TMCM3216CardSlot*>::iterator it;
+    for (it = m_Cards.begin(); it != m_Cards.end(); ++it) {
+        TMCM3216CardSlot* slot = it->second;
+        if (slot) {
             for (int i = 0; i < TMCM3216_MAX_AXIS; ++i)
                 delete slot->pMotors[i];
             delete slot->pControl;
@@ -83,18 +72,24 @@ CTMCM3216BasicMotor* CTMCM3216Manager::CreateMotor(UINT cardID, UCHAR axis, cons
 {
     if (axis >= TMCM3216_MAX_AXIS) return NULL;
     EnterCriticalSection(&m_csLock);
-    auto it = m_Cards.find(cardID);
-    if (it == m_Cards.end())
-    {
+    std::map<UINT, TMCM3216CardSlot*>::iterator it = m_Cards.find(cardID);
+    if (it == m_Cards.end()) {
         LeaveCriticalSection(&m_csLock);
         return NULL;
     }
-    TMCMCardSlot* slot = it->second;
-    if (slot->pMotors[axis] != NULL)
-    {
+    TMCM3216CardSlot* slot = it->second;
+    if (slot->pMotors[axis] != NULL) {
         LeaveCriticalSection(&m_csLock);
         return slot->pMotors[axis];
     }
+
+    char defaultName[64];
+    memset(defaultName, 0, sizeof(defaultName));
+    if (name == NULL) {
+        sprintf(defaultName, "Card%u_Axis%u", cardID, axis);
+        name = defaultName;
+    }
+
     CTMCM3216BasicMotor* pMotor = new CTMCM3216BasicMotor(cardID, axis, name);
     pMotor->AttachControl(slot->pControl);
     slot->pMotors[axis] = pMotor;
@@ -104,14 +99,14 @@ CTMCM3216BasicMotor* CTMCM3216Manager::CreateMotor(UINT cardID, UCHAR axis, cons
 
 CTMCM3216Control* CTMCM3216Manager::GetControl(UINT cardID)
 {
-    auto it = m_Cards.find(cardID);
+    std::map<UINT, TMCM3216CardSlot*>::iterator it = m_Cards.find(cardID);
     return (it != m_Cards.end()) ? it->second->pControl : NULL;
 }
 
 CTMCM3216BasicMotor* CTMCM3216Manager::GetMotor(UINT cardID, UCHAR axis)
 {
     if (axis >= TMCM3216_MAX_AXIS) return NULL;
-    auto it = m_Cards.find(cardID);
+    std::map<UINT, TMCM3216CardSlot*>::iterator it = m_Cards.find(cardID);
     return (it != m_Cards.end()) ? it->second->pMotors[axis] : NULL;
 }
 
@@ -119,16 +114,16 @@ int CTMCM3216Manager::InitAll()
 {
     int fail = 0;
     EnterCriticalSection(&m_csLock);
-    for (auto& kv : m_Cards)
-    {
-        TMCMCardSlot* slot = kv.second;
-        if (!slot || !slot->pControl) { ++fail; continue; }
-        slot->pControl->ReadFirmware(500);
-        for (int i = 0; i < TMCM3216_MAX_AXIS; ++i)
-        {
-            if (slot->pMotors[i])
-            {
-                if (slot->pMotors[i]->ApplyDefaultParam() < 0) ++fail;
+    std::map<UINT, TMCM3216CardSlot*>::iterator it;
+    for (it = m_Cards.begin(); it != m_Cards.end(); ++it) {
+        TMCM3216CardSlot* slot = it->second;
+        if (slot && slot->pControl) {
+            slot->pControl->ReadFirmware(500);
+            for (int i = 0; i < TMCM3216_MAX_AXIS; ++i) {
+                if (slot->pMotors[i]) {
+                    if (slot->pMotors[i]->ApplyDefaultParam() < 0)
+                        ++fail;
+                }
             }
         }
     }
@@ -140,11 +135,10 @@ int CTMCM3216Manager::StopAll()
 {
     int rtn = 0;
     EnterCriticalSection(&m_csLock);
-    for (auto& kv : m_Cards)
-    {
-        if (kv.second && kv.second->pControl)
-        {
-            if (kv.second->pControl->StopAll() < 0) rtn = -1;
+    std::map<UINT, TMCM3216CardSlot*>::iterator it;
+    for (it = m_Cards.begin(); it != m_Cards.end(); ++it) {
+        if (it->second && it->second->pControl) {
+            if (it->second->pControl->StopAll() < 0) rtn = -1;
         }
     }
     LeaveCriticalSection(&m_csLock);
@@ -181,24 +175,28 @@ int CTMCM3216Manager::Home(UINT cardID, UCHAR axis, UINT WaitTM)
     return m ? m->Home(WaitTM) : -1;
 }
 
-int CTMCM3216Manager::SyncStart(UINT cardID)
+int CTMCM3216Manager::SetSyncTarget(UINT cardID, UCHAR axis, int pos, UINT WaitTM)
 {
     CTMCM3216Control* ctrl = GetControl(cardID);
-    return ctrl ? ctrl->StartSyncMove() : -1;
+    return ctrl ? ctrl->SetSyncTargetPos(axis, pos, WaitTM) : -1;
+}
+
+int CTMCM3216Manager::StartSyncMove(UINT cardID, UINT WaitTM)
+{
+    CTMCM3216Control* ctrl = GetControl(cardID);
+    return ctrl ? ctrl->StartSyncMove(WaitTM) : -1;
 }
 
 BOOL CTMCM3216Manager::DispatchCANFrame(UINT canID, const UCHAR* data, int len)
 {
     if (!data || len < 8) return FALSE;
-    // 遍历所有卡，匹配 canID 或 cardID
     EnterCriticalSection(&m_csLock);
     BOOL handled = FALSE;
-    for (auto& kv : m_Cards)
-    {
-        TMCMCardSlot* slot = kv.second;
+    std::map<UINT, TMCM3216CardSlot*>::iterator it;
+    for (it = m_Cards.begin(); it != m_Cards.end(); ++it) {
+        TMCM3216CardSlot* slot = it->second;
         if (slot && slot->pControl &&
-            (slot->canID == canID || slot->cardID == canID))
-        {
+            (slot->canID == canID || slot->cardID == canID)) {
             if (slot->pControl->OnCANRecv(data, len)) handled = TRUE;
         }
     }
@@ -214,27 +212,24 @@ BOOL CTMCM3216Manager::DispatchCANFrame(const TMCL_CAN_Frame& frame)
 void CTMCM3216Manager::PollAll()
 {
     EnterCriticalSection(&m_csLock);
-    for (auto& kv : m_Cards)
-    {
-        if (kv.second && kv.second->pControl)
-            kv.second->pControl->PollStatus();
+    std::map<UINT, TMCM3216CardSlot*>::iterator it;
+    for (it = m_Cards.begin(); it != m_Cards.end(); ++it) {
+        if (it->second && it->second->pControl)
+            it->second->pControl->PollStatus();
     }
     LeaveCriticalSection(&m_csLock);
 }
 
 void CTMCM3216Manager::DumpAllStatus()
 {
-    printf("===== TMCM3216Manager::DumpAllStatus cards=%d =====\n", (int)m_Cards.size());
-    for (auto& kv : m_Cards)
-    {
-        TMCMCardSlot* slot = kv.second;
-        printf("  Card %d (CAN ID=%d)\n", slot->cardID, slot->canID);
-        for (int i = 0; i < TMCM3216_MAX_AXIS; ++i)
-        {
+    printf("=== TMCM3216Manager: %d cards registered ===\n", (int)m_Cards.size());
+    std::map<UINT, TMCM3216CardSlot*>::iterator it;
+    for (it = m_Cards.begin(); it != m_Cards.end(); ++it) {
+        TMCM3216CardSlot* slot = it->second;
+        printf("  Card %u (CAN ID=%u)\n", slot->cardID, slot->canID);
+        for (int i = 0; i < TMCM3216_MAX_AXIS; ++i) {
             if (slot->pMotors[i])
-            {
                 slot->pMotors[i]->DumpStatus();
-            }
         }
     }
 }

@@ -375,14 +375,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\motor\TMCM3216Control.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\motor\TMCM3216Control.h"
-				>
-			</File>
-			<File
 				RelativePath=".\motor\TMCM3216Manager.cpp"
 				>
 			</File>

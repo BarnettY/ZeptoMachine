@@ -191,7 +191,7 @@ struct CtrlRcvBufferInfo
 #define MAX_ACTION_CNT	0X50        //64 ¸ö
 
 class CCanControl;
-class CCanModule;
+//class CCanModule;
 WX_DECLARE_LIST(CAN_OBJ, CANOBJList);
 class CCanCom
 {

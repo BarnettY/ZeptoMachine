@@ -1,15 +1,11 @@
 // CanCom.cpp: implementation of the CCanCom class.
-//
 //////////////////////////////////////////////////////////////////////
-
 #ifdef	VLD
 #include <vld.h>
 #endif
 #ifndef WX_PRECOMP
     #include "wx/wx.h"
 #endif
-
-
 #include "CanCom.h"
 #include "CanControl.h"
 #include "../trace.h"

@@ -1,125 +1,110 @@
-// TMCM3216_Sample.cpp
-// 演示：多卡多轴 + 异步控制的完整使用流程
+// TMCM3216_Sample.cpp - C++98 兼容版
+// 完整用法示例：多卡多轴 + 同步 / 异步控制
 
 #include "TMCM3216Manager.h"
-#include <stdio.h>
-#include <windows.h>
+//#include <stdio.h>
+//#include <windows.h>
 
-// ========== 业务回调函数 ==========
-// 当某个轴异步命令完成后，Manager -> Control -> Motor -> 此函数
-void OnMotorFinished(const TMCM3216FinishInfo& info, void* pUserData)
+// ============ 完成回调示例
+void OnMotorFinished(const TMCM3216FinishInfo & info, void* pUserData)
 {
     const char* axisName = (const char*)pUserData;
     printf("[CB] axis=%s finished, flag=0x%02X, value=%d\n",
            axisName ? axisName : "?", info.flag, info.value);
 }
 
-// ========== 模拟的 CAN 发送：真实项目中需要对接 CAN 驱动 ==========
-// 此处演示如何在 Control 之上重写 DoCANSend：
-class CMyTMCMControl : public CTMCM3216Control
-{
-public:
-    CMyTMCMControl(UINT cardID, UINT canID) : CTMCM3216Control(cardID, canID) {}
-    virtual int DoCANSend(UINT canID, const UCHAR* data, int len) override
-    {
-        // 真实项目：g_Can.SendSingleFrame(canID, data, len);
-        printf("[CAN-SEND] card=%d id=0x%02X data=", m_CardID, canID);
-        for (int i = 0; i < 8; ++i) printf("%02X ", data[i]);
-        printf("\n");
-        return 0;
-    }
-    virtual int DoCANWait(UINT canID, UCHAR* outData, int& outLen, UINT WaitTM) override
-    {
-        // 真实项目：阻塞等待并读取回包
-        if (WaitTM == 0) return 0;
-        // 这里模拟：直接返回"未实现等待"，让异步模式生效
-        return -2;
-    }
-};
-
-// ========== 主流程 ==========
 int main(int argc, char* argv[])
 {
-    // 1. 注册两张卡（CAN ID 分别为 0x01/0x02）
-    g_TMCMManager.RegisterCard(0, 0x01);
-    g_TMCMManager.RegisterCard(1, 0x02);
+    printf("TMCM-3216 Multi-Card Multi-Axis Sample\n");
 
-    // 1.1 可选：用自定义 Control 替换默认 Control（以便重写 DoCANSend）
-    //      如果不需要自定义，可跳过这一步；此处演示用法
-    //      真实项目可直接在 Control 的派生类中实现 CAN 收发对接
-    //      本示例为简单起见，不实际替换，直接使用默认 Control（打印 debug）
+    // ========== 步骤 1：注册卡片（逻辑卡号 + CAN ID） ==========
+    CTMCM3216Manager& mgr = CTMCM3216Manager::Instance();
 
-    // 2. 在各卡上创建业务电机
-    CTMCM3216BasicMotor* pX = g_TMCMManager.CreateMotor(0, 0, "X-Axis");
-    CTMCM3216BasicMotor* pY = g_TMCMManager.CreateMotor(0, 1, "Y-Axis");
-    CTMCM3216BasicMotor* pZ = g_TMCMManager.CreateMotor(0, 2, "Z-Axis");
-    CTMCM3216BasicMotor* pA = g_TMCMManager.CreateMotor(1, 0, "A-Axis");
-    CTMCM3216BasicMotor* pB = g_TMCMManager.CreateMotor(1, 1, "B-Axis");
+    mgr.RegisterCard(0, 0x01);  // 卡片0: CAN ID = 1
+    mgr.RegisterCard(1, 0x02);  // 卡片1: CAN ID = 2
 
-    if (!pX || !pY || !pZ || !pA || !pB)
-    {
-        printf("CreateMotor failed\n");
+    // ========== 步骤 2：创建电机对象 ========== ==========
+    CTMCM3216BasicMotor* pX = mgr.CreateMotor(0, 0, "X-Axis");
+    CTMCM3216BasicMotor* pY = mgr.CreateMotor(0, 1, "Y-Axis");
+    CTMCM3216BasicMotor* pZ = mgr.CreateMotor(0, 2, "Z-Axis");
+    CTMCM3216BasicMotor* pA = mgr.CreateMotor(1, 0, "A-Axis");
+    CTMCM3216BasicMotor* pB = mgr.CreateMotor(1, 1, "B-Axis");
+
+    if (!pX || !pY || !pZ || !pA || !pB) {
+        printf("Failed to create motors\n");
         return -1;
     }
 
-    // 3. (可选) 为每个 Motor 注册完成回调
+    // ========== 步骤 3：设置默认参数（可选） ==========
+    TMCM3216MotorDefaultParam paramHigh;
+    paramHigh.maxSpeed = 8000;
+    paramHigh.acceleration = 2000;
+
+    TMCM3216MotorDefaultParam paramLow;
+    paramLow.maxSpeed = 5000;
+    paramLow.acceleration = 1000;
+
+    pX->SetDefaultParam(paramHigh);
+    pY->SetDefaultParam(paramHigh);
+    pZ->SetDefaultParam(paramHigh);
+    pA->SetDefaultParam(paramLow);
+    pB->SetDefaultParam(paramLow);
+
+    // ========== 步骤 4：注册异步回调（可选） ==========
     pX->SetFinishCallback(OnMotorFinished, (void*)"X-Axis");
     pY->SetFinishCallback(OnMotorFinished, (void*)"Y-Axis");
-    pZ->SetFinishCallback(OnMotorFinished, (void*)"Z-Axis");
     pA->SetFinishCallback(OnMotorFinished, (void*)"A-Axis");
-    pB->SetFinishCallback(OnMotorFinished, (void*)"B-Axis");
 
-    // 4. 预设置各轴参数（可选）
-    TMCM3216MotorDefaultParam paramX, paramA;
-    paramX.maxSpeed = 8000;  paramX.acceleration = 2000;
-    paramA.maxSpeed = 5000;  paramA.acceleration = 1000;
-    pX->SetDefaultParam(paramX);
-    pY->SetDefaultParam(paramX);
-    pZ->SetDefaultParam(paramX);
-    pA->SetDefaultParam(paramA);
-    pB->SetDefaultParam(paramA);
+    // ========== 步骤 5：初始化（应用默认参数） ==========
+    printf("Initializing all motors...\n");
+    mgr.InitAll();
 
-    // 5. 应用参数（真实项目中会下发到硬件）
-    g_TMCMManager.InitAll();
+    // ========== 步骤 6：同步运动示例 ==========
+    printf("\n--- Sync motion sample --- \n");
+    int rtn;
+    rtn = pX->MoveAbsolute(10000, 1000);  // 同步等待 1 秒
+    printf("X-Axis MoveAbsolute return=%d\n", rtn);
+    // WaitTM > 0 会调用底层 DoCANWait（默认空实现，真实环境下需要对接）
 
-    printf("=== 异步运动测试：同时发 5 个轴的异步命令 ===\n");
-    // 异步：不等完成，立即返回；回包通过 DispatchCANFrame 触发回调
-    pX->AsyncMoveAbs(10000);
-    pY->AsyncMoveAbs(20000);
-    pZ->AsyncMoveAbs(30000);
-    pA->AsyncMoveRel(5000);
-    pB->AsyncMoveRel(5000);
+    // ========== 步骤 7：异步运动示例 ==========
+    printf("\n--- Async motion sample ---\n");
+    pX->AsyncMoveAbs(20000);
+    pY->AsyncMoveRel(5000);
+    pA->AsyncMoveAbs(-8000);
 
-    // 在真实系统里，这里会有 CAN 中断/线程从硬件收取回包，
-    // 并调用 g_TMCMManager.DispatchCANFrame(canID, data, 8) 分发。
-    // 演示中我们手动构造一个"X 轴完成"回包来测试回调流程：
-    UCHAR sampleRx[8] = {0x01, 0x64, 0x04, 0x00, 0x00, 0x00, 0x27, 0x10};
-    //        模块地址^^     ^^状态码=100(成功) ^^命令号=4(MVP_ABS) ^^轴号=0
-    //                                                         value = 0x00002710 = 10000
-    g_TMCMManager.DispatchCANFrame(0x01, sampleRx, 8);
+    // ========== 步骤 8：模拟收到 CAN 回包（真实环境由 CAN 层触发）==========
+    printf("\n--- Simulating CAN reply dispatch ---\n");
 
-    // 6. 同步接口测试：对 Z 轴用阻塞等待
-    printf("=== 同步运动测试 ===\n");
-    int rtn = pZ->GoTo(50000, 1000);
-    printf("Z axis sync return = %d (0=send OK, -2=WaitNotImpl)\n", rtn);
+    // 构造"X-Axis完成"回包：模块地址0x01，状态0x64(100)，value=20000
+    UCHAR reply1[8];
+    memset(reply1, 0, 8);
+    reply1[0] = 0x01;           // 模块地址 = 卡片0的CAN ID
+    reply1[1] = 0x64;              // 状态码 = 成功
+    reply1[2] = 0x00;              // 轴号 0
+    reply1[4] = 0x00;              // value = 20000 (0x4E20)
+    reply1[5] = 0x00;
+    reply1[6] = 0x4E;
+    reply1[7] = 0x20;
+    mgr.DispatchCANFrame(0x01, reply1, 8);
 
-    // 7. 多轴同步：同一张卡上先写目标位置，再统一启动
-    printf("=== 多轴同步测试 ===\n");
-    CTMCM3216Control* ctrl0 = g_TMCMManager.GetControl(0);
-    if (ctrl0)
-    {
-        ctrl0->SetSyncTargetPos(0, 1000, 0);
-        ctrl0->SetSyncTargetPos(1, 2000, 0);
-        ctrl0->SetSyncTargetPos(2, 3000, 0);
-        ctrl0->StartSyncMove();
-    }
+    // ========== 步骤 9：多轴同步（同卡）==========
+    printf("\n--- Multi-axis sync sample ---\n");
+    mgr.SetSyncTarget(0, 0, 1000, 0);  // 先为卡片0的轴0写目标1000
+    mgr.SetSyncTarget(0, 1, 2000, 0);  // 先为卡片0的轴1写目标2000
+    mgr.SetSyncTarget(0, 2, 3000, 0);  // 先为卡片0的轴2写目标3000
+    mgr.StartSyncMove(0, 0);               // 统一启动（异步）
 
-    // 8. 状态打印
-    g_TMCMManager.DumpAllStatus();
+    // ========== 步骤 10：状态显示 ==========
+    printf("\n--- Status dump ---\n");
+    mgr.DumpAllStatus();
 
-    // 9. 停止所有轴
-    printf("=== 全部停止 ===\n");
-    g_TMCMManager.StopAll();
+    // ========== 步骤 11：状态轮询（无回调机制时使用）==========
+    // mgr.PollAll();
 
+    // ========== 步骤 12：全部停止 ==========
+    printf("\n--- Stop all ---\n");
+    mgr.StopAll();
+
+    printf("\nSample finished. Cards registered: %d\n", mgr.GetCardCount());
     return 0;
 }

@@ -81,7 +81,7 @@ enum MachineStateType
 #define FASSERT wxASSERT
 extern void NOOP(const TCHAR *msg, ... );
 extern void CanTraceLog(const TCHAR *msg, ... );
-extern void ReportWarn(BYTE part,int errcode,wxString strinf=_T(""));
+//extern void ReportWarn(BYTE part,int errcode,wxString strinf=_T(""));
 
 extern void READLOG(int nport,const BYTE *buff,UINT len);
 extern void WRITELOG(int nport,const BYTE *buff,UINT len);

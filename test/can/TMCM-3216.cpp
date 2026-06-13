@@ -2,8 +2,8 @@
 
 void exampleUsage()
 {
-    BYTE moduleAddr = 1;
-    BYTE axis = 0;
+    uint8_t moduleAddr = 1;
+    uint8_t axis = 0;
 
     // 运动控制示例
     TMCL_CAN_Frame frame1 = TMCM3216_CAN_Protocol::moveAbsolute(moduleAddr, axis, 10000);
@@ -60,24 +60,24 @@ void exampleUsage()
 
 void parseExample()
 {
-    BYTE rxData[8] = {0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x07, 0xD0};
+    uint8_t rxData[8] = {0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x07, 0xD0};
     TMCL_RxResult res = TMCM3216_CAN_Protocol::parseFrame(rxData, 8);
 
     if (res.valid)
     {
-        BYTE addr = res.moduleAddr;
-        BYTE sta = res.status;
-        int data = res.value;
+        uint8_t addr = res.moduleAddr;
+        uint8_t sta = res.status;
+        int32_t data = res.value;
 
         if (res.isSuccess())
         {
             const char* desc = TMCM3216_CAN_Protocol::getStatusDescription(res);
             
-            int position = res.value;
+            int32_t position = res.value;
             
-            WORD uint16Val = TMCM3216_CAN_Protocol::toUint16(res);
+            uint16_t uint16Val = TMCM3216_CAN_Protocol::toUint16(res);
             int16_t int16Val = TMCM3216_CAN_Protocol::toInt16(res);
-            BYTE uint8Val = TMCM3216_CAN_Protocol::toUint8(res);
+            uint8_t uint8Val = TMCM3216_CAN_Protocol::toUint8(res);
             bool boolVal = TMCM3216_CAN_Protocol::toBool(res);
         }
         else
@@ -86,12 +86,12 @@ void parseExample()
         }
     }
 
-    BYTE statusRxData[8] = {0x01, 0x00, 0x39, 0x00, 0x00, 0x00, 0x00, 0x05};
+    uint8_t statusRxData[8] = {0x01, 0x00, 0x39, 0x00, 0x00, 0x00, 0x00, 0x05};
     TMCL_RxResult statusRes = TMCM3216_CAN_Protocol::parseFrame(statusRxData, 8);
     
     if (statusRes.valid && statusRes.isSuccess())
     {
-        UINT statusFlags = static_cast<UINT>(statusRes.value);
+        uint32_t statusFlags = static_cast<uint32_t>(statusRes.value);
         
         bool isMoving = TMCM3216_CAN_Protocol::isMotorMoving(statusFlags);
         bool targetReached = TMCM3216_CAN_Protocol::isTargetReached(statusFlags);
@@ -100,22 +100,22 @@ void parseExample()
         bool limitTriggered = TMCM3216_CAN_Protocol::hasLimitTriggered(statusFlags);
     }
 
-    BYTE ainRxData[8] = {0x01, 0x00, 0x19, 0x00, 0x00, 0x00, 0x07, 0xFF};
+    uint8_t ainRxData[8] = {0x01, 0x00, 0x19, 0x00, 0x00, 0x00, 0x07, 0xFF};
     TMCL_RxResult ainRes = TMCM3216_CAN_Protocol::parseFrame(ainRxData, 8);
     
     if (ainRes.valid && ainRes.isSuccess())
     {
         float voltage = TMCM3216_CAN_Protocol::parseAINVoltage(ainRes, 3.3f);
-        WORD rawValue = TMCM3216_CAN_Protocol::toUint16(ainRes);
+        uint16_t rawValue = TMCM3216_CAN_Protocol::toUint16(ainRes);
     }
 
-    BYTE fwRxData[8] = {0x01, 0x00, 0x12, 0x00, 0x01, 0x02, 0x00, 0x64};
+    uint8_t fwRxData[8] = {0x01, 0x00, 0x12, 0x00, 0x01, 0x02, 0x00, 0x64};
     TMCL_RxResult fwRes = TMCM3216_CAN_Protocol::parseFrame(fwRxData, 8);
     
     if (fwRes.valid && fwRes.isSuccess())
     {
-        BYTE major, minor;
-        WORD build;
+        uint8_t major, minor;
+        uint16_t build;
         TMCM3216_CAN_Protocol::parseFirmwareVersion(fwRes, major, minor, build);
     }
 }
