@@ -6,8 +6,6 @@
 #define AFX_ANINTERFACE_H__B4F667CF_817D_489E_A4A9_4C7FCE5727C6__INCLUDED_
 
 #include "../comon.h"
-
-
 //2.定义CAN信息帧的数据类型。
 typedef  struct  _CAN_OBJ{
 	UINT	ID;

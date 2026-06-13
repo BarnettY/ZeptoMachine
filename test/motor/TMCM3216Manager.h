@@ -2,12 +2,14 @@
 // 多卡多轴管理器：统一注册、创建电机、分发 CAN 回包
 #pragma once
 
+#ifndef WX_PRECOMP
+#include "wx/wx.h"
+#endif
+
 #include "../can/TMCM3216Control.h"
 #include "TMCM3216BasicMotor.h"
-//#include <windows.h>
-//#include <map>
+#include <wx/hashmap.h>
 
-// 内部卡片槽
 struct TMCM3216CardSlot
 {
     UINT cardID;
@@ -62,13 +64,9 @@ public:
 
     // ========== 轮询 ==========
     void PollAll();
-
-    // ========== 调试 ==========
     void DumpAllStatus();
-
     int GetCardCount() const { return (int)m_Cards.size(); }
-
-private:
-    std::map<UINT, TMCM3216CardSlot*> m_Cards;
+private: 
+	wxHashMap<UINT, TMCM3216CardSlot*> m_Cards;
     CRITICAL_SECTION m_csLock;
 };

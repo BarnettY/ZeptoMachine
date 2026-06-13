@@ -1,7 +1,5 @@
 // TMCM3216Motor.cpp - C++98 兼容版
 #include "TMCM3216Motor.h"
-
-
 CTMCM3216Motor::CTMCM3216Motor(UINT cardID, UCHAR axisID)
     : m_CardID(cardID), m_AxisID(axisID), m_pCtrl(NULL),
       m_pFinishCB(NULL), m_pCBUserData(NULL)

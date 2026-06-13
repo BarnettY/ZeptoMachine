@@ -111,8 +111,6 @@ int CTMCM3216Control::SendAndWait(TMCL_CAN_Frame& frame, UINT WaitTM)
     LeaveCriticalSection(&m_csLock);
     return rtn;
 }
-
-// ============ 回调分发 ============
 void CTMCM3216Control::NotifyAxisFinished(UCHAR axis, UCHAR flag, int value)
 {
     if (axis >= TMCM3216_MAX_AXIS) return;
@@ -195,8 +193,6 @@ int CTMCM3216Control::ResetModule(UINT WaitTM)
     TMCL_CAN_Frame frame = TMCM3216_CAN_Protocol::resetModule((UCHAR)m_CanID);
     return SendAndWait(frame, WaitTM);
 }
-
-// ============ 轴相关同步读 ============
 int CTMCM3216Control::ReadActualPos(UCHAR axis, int& pos, UINT WaitTM)
 {
     if (axis >= TMCM3216_MAX_AXIS) return -1;

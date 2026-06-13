@@ -3,8 +3,6 @@
 #pragma once
 #include "../can/TMCM3216Control.h"
 #include "../comon.h"
-
-// 完成回调结构体
 struct TMCM3216FinishInfo
 {
     UCHAR axis;

@@ -45,9 +45,7 @@ public:
     int ReadModuleAddress(UINT WaitTM = 500);
     int WriteModuleAddress(UCHAR newAddr, UINT WaitTM = 500);
     int ResetModule(UINT WaitTM = 1000);
-
-    // 轴参数读写
-    int ReadActualPos(UCHAR axis, int& pos, UINT WaitTM = 500);
+	int ReadActualPos(UCHAR axis, int& pos, UINT WaitTM = 500);
     int ReadActualVel(UCHAR axis, int& vel, UINT WaitTM = 500);
     int ReadMaxSpeed(UCHAR axis, UINT& speed, UINT WaitTM = 500);
     int WriteMaxSpeed(UCHAR axis, UINT speed, UINT WaitTM = 500);
@@ -57,9 +55,7 @@ public:
     int WriteMaxCurrent(UCHAR axis, UCHAR current, UINT WaitTM = 500);
     int ReadMicroStep(UCHAR axis, UINT& microstep, UINT WaitTM = 500);
     int WriteMicroStep(UCHAR axis, UINT microstep, UINT WaitTM = 500);
-
-    // 状态查询
-    int ReadMotorRunning(UCHAR axis,BOOL& bRunning,UINT WaitTM = 500);
+	int ReadMotorRunning(UCHAR axis,BOOL& bRunning,UINT WaitTM = 500);
     int ReadHomeState(UCHAR axis, BOOL& bHome, UINT WaitTM = 500);
 
     // 运动控制
@@ -121,10 +117,7 @@ protected:
 
     // 处理接收到的解析结果（同步/异步公用)
     void HandleRxResult(const TMCL_RxResult& res);
-
-    // 异步命令完成时通知对应轴
-    void NotifyAxisFinished(UCHAR axis, UCHAR flag, int value = 0);
-
+	void NotifyAxisFinished(UCHAR axis, UCHAR flag, int value = 0);
     // ========== 成员变量 ==========
     UINT                m_CardID;
     UINT                m_CanID;
